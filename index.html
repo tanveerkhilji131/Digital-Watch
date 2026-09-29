@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A modern digital watch displaying live local time and date."
+    >
+
+    <title>Chrono — Digital Watch</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="watch-app">
+        <header class="app-header">
+            <a class="brand" href="#" aria-label="Chrono home">
+                <span class="brand-icon" aria-hidden="true">◷</span>
+                <span>CHRONO<span class="brand-dot">.</span></span>
+            </a>
+
+            <div class="live-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                LIVE CLOCK
+            </div>
+        </header>
+
+        <section class="watch-card" aria-label="Digital clock">
+            <div class="card-top">
+                <div>
+                    <p class="eyebrow">YOUR LOCAL TIME</p>
+                    <p class="timezone" id="timezone">Detecting timezone...</p>
+                </div>
+
+                <span class="clock-icon" aria-hidden="true">◷</span>
+            </div>
+
+            <div class="date-display">
+                <span id="weekday">MONDAY</span>
+                <span class="date-separator">/</span>
+                <span id="full-date">JANUARY 01, 2026</span>
+            </div>
+
+            <div class="time-display" aria-label="Current time">
+                <span class="time-part" id="hours">12</span>
+                <span class="time-colon" aria-hidden="true">:</span>
+                <span class="time-part" id="minutes">00</span>
+                <span class="time-colon seconds-colon" aria-hidden="true">:</span>
+                <span class="time-part seconds-part" id="seconds">00</span>
+
+                <span class="period" id="period">AM</span>
+            </div>
+
+            <div class="card-divider"></div>
+
+            <div class="clock-footer">
+                <div class="date-block">
+                    <span class="footer-label">TODAY</span>
+                    <span class="footer-value" id="short-date">01 / 01 / 2026</span>
+                </div>
+
+                <div class="date-block date-block-right">
+                    <span class="footer-label">STATUS</span>
+                    <span class="footer-value status-value">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Synchronized
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="clock-controls" aria-label="Clock settings">
+            <div class="controls-copy">
+                <span class="control-title">Time format</span>
+                <span class="control-description">Choose your preferred display</span>
+            </div>
+
+            <div class="format-switch" role="group" aria-label="Time format">
+                <button
+                    class="format-button is-active"
+                    id="format12"
+                    type="button"
+                    aria-pressed="true"
+                >
+                    12-hour
+                </button>
+
+                <button
+                    class="format-button"
+                    id="format24"
+                    type="button"
+                    aria-pressed="false"
+                >
+                    24-hour
+                </button>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <span>CRAFTED WITH PRECISION</span>
+            <span>TIME, BEAUTIFULLY DISPLAYED.</span>
+        </footer>
+    </main>
+</body>
+</html>

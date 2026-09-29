@@ -1,0 +1,453 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    color-scheme: dark;
+
+    --background: #080b14;
+    --surface: #101625;
+    --text: #f2f5ff;
+    --muted: #8b95ad;
+    --accent: #75a7ff;
+    --accent-bright: #a5c5ff;
+    --border: rgba(180, 198, 235, 0.12);
+    --green: #64e5ac;
+
+    --font-main: 'Inter', Arial, sans-serif;
+    --font-digital: 'DM Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 32px 20px;
+    overflow-x: hidden;
+
+    color: var(--text);
+    font-family: var(--font-main);
+
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(57, 100, 185, 0.16),
+            transparent 55%
+        ),
+        var(--background);
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 4px;
+}
+
+.watch-app {
+    width: min(100%, 760px);
+    animation: appear 650ms ease both;
+}
+
+.app-header,
+.brand,
+.live-status,
+.card-top,
+.date-display,
+.time-display,
+.clock-footer,
+.status-value,
+.clock-controls,
+.format-switch,
+.app-footer {
+    display: flex;
+    align-items: center;
+}
+
+.app-header {
+    justify-content: space-between;
+    margin-bottom: 26px;
+}
+
+.brand {
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--accent-bright);
+    font-size: 25px;
+    letter-spacing: 0;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.brand-dot {
+    color: var(--accent);
+}
+
+.live-status {
+    gap: 9px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 12px rgba(100, 229, 172, 0.45);
+}
+
+.watch-card {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(24px, 5vw, 42px);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 35, 58, 0.96),
+            rgba(13, 18, 31, 0.98) 70%
+        );
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.32),
+        inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.watch-card::before {
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 76%;
+    height: 1px;
+    content: "";
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(117, 167, 255, 0.7),
+        transparent
+    );
+}
+
+.card-top {
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.eyebrow,
+.footer-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.timezone {
+    margin-top: 9px;
+    color: #c4cde0;
+    font-size: 13px;
+}
+
+.clock-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    color: var(--accent-bright);
+    font-size: 31px;
+    background: rgba(117, 167, 255, 0.06);
+}
+
+.date-display {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 52px;
+    color: var(--accent-bright);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.date-separator {
+    color: #56637d;
+}
+
+.time-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: clamp(3px, 1.1vw, 12px);
+    margin: 14px 0 35px;
+
+    font-family: var(--font-digital);
+    font-size: clamp(48px, 11.5vw, 96px);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    letter-spacing: -5px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.time-part {
+    color: var(--text);
+    text-shadow: 0 0 35px rgba(117, 167, 255, 0.12);
+}
+
+.time-colon {
+    color: var(--accent);
+    animation: blink 1s steps(2, start) infinite;
+}
+
+.seconds-part {
+    color: var(--accent-bright);
+}
+
+.period {
+    margin-left: 5px;
+    color: var(--accent-bright);
+    font-family: var(--font-main);
+    font-size: clamp(12px, 2.5vw, 17px);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.card-divider {
+    height: 1px;
+    background: var(--border);
+}
+
+.clock-footer {
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 25px;
+}
+
+.date-block {
+    display: grid;
+    gap: 10px;
+}
+
+.date-block-right {
+    justify-items: end;
+}
+
+.footer-value {
+    color: #e1e7f5;
+    font-family: var(--font-digital);
+    font-size: 13px;
+}
+
+.status-value {
+    gap: 8px;
+    font-family: var(--font-main);
+    font-size: 12px;
+}
+
+.clock-controls {
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 22px 24px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.controls-copy {
+    display: grid;
+    gap: 6px;
+}
+
+.control-title {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.control-description {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.format-switch {
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.format-button {
+    padding: 10px 13px;
+    border: 0;
+    border-radius: 9px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    background: transparent;
+    transition:
+        background 180ms ease,
+        color 180ms ease;
+}
+
+.format-button:hover {
+    color: var(--text);
+}
+
+.format-button.is-active {
+    color: #09101e;
+    background: var(--accent-bright);
+    box-shadow: 0 2px 12px rgba(117, 167, 255, 0.15);
+}
+
+.app-footer {
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+    color: #66718a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0.35;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 900px) {
+    .time-display {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 22px 14px;
+    }
+
+    .app-header {
+        margin-bottom: 18px;
+    }
+
+    .brand {
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    .brand-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .live-status {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .watch-card {
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .date-display {
+        gap: 7px;
+        margin-top: 36px;
+        font-size: 9px;
+        letter-spacing: 1.2px;
+    }
+
+    .time-display {
+        justify-content: flex-start;
+        gap: 3px;
+        margin: 18px 0 28px;
+        font-size: clamp(39px, 11.5vw, 58px);
+        letter-spacing: -3px;
+    }
+
+    .period {
+        margin-left: 3px;
+        font-size: 11px;
+    }
+
+    .clock-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 26px;
+    }
+
+    .clock-controls {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 19px;
+    }
+
+    .format-switch {
+        width: 100%;
+    }
+
+    .format-button {
+        flex: 1;
+    }
+
+    .app-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        font-size: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
